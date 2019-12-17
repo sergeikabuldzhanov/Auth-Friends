@@ -23,6 +23,9 @@ export default function NavBar({token, history}) {
       <NavLink className="navlink" to="/friends">
         Friend List
       </NavLink>
+      <NavLink className="navlink" to="/add_friend">
+        AddFriend
+      </NavLink>
     </nav>
   );
 }

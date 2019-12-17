@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import PrivateRoute from "./components/PrivateRoute";
 import FriendsList from "./components/FriendsList";
 import axios from "axios";
+import AddFriend from "./components/AddFriend";
 
 function App(props) {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -27,6 +28,7 @@ function App(props) {
       <Route path="/" render={(props)=><NavBar token={token} {...props}/>}/>
       <Route path="/login" render={(props) => <LoginForm onSubmit={onSubmit} {...props}/>} />
       <PrivateRoute path="/friends" component={FriendsList} />
+      <PrivateRoute path="/add_friend" component={AddFriend} />
     </div>
   );
 }
