@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 export default function LoginForm(props) {
-  const [form, setForm] = useState({ login: "", password: "" });
+  const [form, setForm] = useState({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   function onInput(event) {
@@ -10,15 +11,17 @@ export default function LoginForm(props) {
       [event.target.name]: event.target.value
     });
   }
-  function onSubmit(event) {
-    event.preventDefault();
-    setIsLoading(true);
-  }
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={event=>{
+      event.preventDefault();
+      setIsLoading(true);
+      props.onSubmit(form);
+      props.history.push('/friends');
+    }}>
       <label>
         Login:
-        <input type="text" name="login" onChange={onInput} value={form.login} />
+        <input type="text" name="username" onChange={onInput} value={form.username} />
       </label>
       <label>
         Password:
